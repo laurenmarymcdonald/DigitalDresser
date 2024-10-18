@@ -24,6 +24,7 @@ struct ClothingInfo: View {
     let sizes = ["XS", "Small", "Medium", "Large", "XL"]
     let lengthsTops = ["Short Sleeve", "Long Sleeve", "Sleeveless", "Tube top", "Crop Top"]
     let lengthsBottoms = ["Shorts", "Jeans", "Pants", "Short skirt", "Midi Skirt", "Long Skirt"]
+    let types = ["Dress", "Coat", "Sweater", "Jacket", "Shoes", "Accessories", "Other"]
     var name: String
     @Binding var size: String
     @Binding var length: String
@@ -43,14 +44,23 @@ struct ClothingInfo: View {
                             Text($0)
                         }
                     }
-                    Picker("Length", selection: $length) {
-                        if(name == "Tops") {
-                            ForEach(lengthsTops, id: \.self) {
-                                Text($0)
+                    if(name == "Tops" || name == "Bottoms"){
+                        Picker("Length", selection: $length) {
+                            if(name == "Tops") {
+                                ForEach(lengthsTops, id: \.self) {
+                                    Text($0)
+                                }
+                            }
+                            else if (name == "Bottoms"){
+                                ForEach(lengthsBottoms, id: \.self) {
+                                    Text($0)
+                                }
                             }
                         }
-                        else{
-                            ForEach(lengthsBottoms, id: \.self) {
+                    }
+                    else {
+                        Picker("Type",selection: $extraInfo) {
+                            ForEach(types, id: \.self) {
                                 Text($0)
                             }
                         }

@@ -9,10 +9,9 @@ import SwiftUI
 import PhotosUI
 
 struct Closet: View {
-    @EnvironmentObject var closetImages: Collection
+    @EnvironmentObject var collection: Collection
     @Binding var array: [ClothingItem]
     @State var title: String
-    @EnvironmentObject var collection: Collection
     @State private var selectedItem: PhotosPickerItem?
     @State var image: UIImage?
     @State private var bgColor = Color.white
@@ -51,7 +50,7 @@ struct ItemImageView: View {
     var index: Int
     var title: String
     @Binding var array: [ClothingItem]
-    @EnvironmentObject var closetImages: Collection
+    @EnvironmentObject var collection: Collection
     @State var showInfo = false
     var body: some View {
         VStack {
@@ -63,15 +62,17 @@ struct ItemImageView: View {
             
             HStack {
                 Button(action: {
-                    closetImages.deleteImage(at: index, from: $array)
+                    collection.deleteImage(at: index, from: $array)
                 }) {
                     Image(systemName: "trash")
                         .foregroundColor(.red)
                 }
-                
+                /*Button("Remove background") {
+                    collection.removeBackgorund(at:index, from: $array)
+                }
                 Button(action: { self.showInfo.toggle() }) {
                     Image(systemName: "info.circle").foregroundColor(.blue)
-                }
+                }*/
                 .sheet(isPresented: $showInfo) {
                     ClothingInfo(
                         clothingItem: clothingItem,

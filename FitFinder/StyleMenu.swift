@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct StyleMenu: View {
-    @EnvironmentObject var closetImages: Collection
+    @EnvironmentObject var collection: Collection
     private var buttonColor = Color(red: 187/255, green: 145/255, blue: 250/255)
     var body: some View {
         NavigationStack {
+            Text("Style")
+                .font(.custom("Georgia", size: 37))
+                .fontWeight(.black)
+                .offset(y: -250)
             NavigationLink("Make an Outfit") {
                 Style()
             }
@@ -22,7 +26,7 @@ struct StyleMenu: View {
             .foregroundColor(.white)
             
             NavigationLink("View Past Outfit") {
-               OutfitCloset()
+                OutfitCloset()
             }
             .font(.custom("Georgia", size: 30))
             .buttonStyle(.borderedProminent)

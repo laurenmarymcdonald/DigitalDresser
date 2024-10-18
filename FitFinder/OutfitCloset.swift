@@ -9,9 +9,8 @@ import SwiftUI
 import _PhotosUI_SwiftUI
 
 struct OutfitCloset: View {
-    @EnvironmentObject var closetImages: Collection
     @EnvironmentObject var collection: Collection
-    @State private var selectedItem: PhotosPickerItem?
+   // @Binding var outfits: [OutfitItem]
     @State var image: UIImage?
     @State private var bgColor = Color.white
     var buttonColor = Color(red: 187/255, green: 145/255, blue: 250/255)
@@ -25,37 +24,37 @@ struct OutfitCloset: View {
             .tint(buttonColor)
             .fontWeight(.black)
             .foregroundColor(.white)
-            /*ScrollView(.vertical) {
-                ForEach(array.indices, id: \.self) { index in
-                    ImageView(clothingItem: array[index], index: index, title: title, array: $array)
+            ScrollView(.vertical) {
+                ForEach(collection.outfits.indices, id: \.self) { index in
+                    OutfitImageView(index: index, outfits: $collection.outfits)
                 }
-            }*/
+            }
         }
     }
 }
 
-struct OutfitItem {
-    var clothingItemTop: ClothingItem
-    var clothingItemBottom: ClothingItem
-}
-/*
-struct ClothingItemImageView: View {
-    var clothingItemTop: ClothingItem
-    var clothingItemBottom: ClothingItem
-    var title: String
-    @EnvironmentObject var closetImages: Collection
+
+
+struct OutfitImageView: View {
+    var index: Int
+    @Binding var outfits: [OutfitItem]
+    @EnvironmentObject var collection: Collection
     @State var showInfo = false
     var body: some View {
         VStack {
-            Image(uiImage: clothingItem.image)
+            Image(uiImage: outfits[index].clothingItemTop.image)
                 .resizable()
                 .frame(width: 200, height: 250)
                 .scaledToFit()
                 .padding(5)
-            
+            Image(uiImage: outfits[index].clothingItemBottom.image)
+                .resizable()
+                .frame(width: 200, height: 250)
+                .scaledToFit()
+                .padding(5)
             HStack {
                 Button(action: {
-                    closetImages.deleteImage(at: index, from: $array)
+                    collection.deleteOutfit(at: index, from: $outfits)
                 }) {
                     Image(systemName: "trash")
                         .foregroundColor(.red)
@@ -65,19 +64,15 @@ struct ClothingItemImageView: View {
                     Image(systemName: "info.circle").foregroundColor(.blue)
                 }
                 .sheet(isPresented: $showInfo) {
-                    ClothingInfo(
-                        clothingItem: clothingItem,
-                        name: title,
-                        size: $array[index].size,
-                        length: $array[index].length,
-                        price: $array[index].price,
-                        extraInfo: $array[index].extraInfo,
-                        color: $array[index].color
+                    OutfitInfo(
+                        outfitItem: outfits[index],
+                        occasion: $outfits[index].occasion,
+                        date: $outfits[index].date,
+                        worn: $outfits[index].worn
                     )
                 }
             }
         }
     }
-}*/
+}
 
-//NOTE: look at clothing item code and change for it to hold a top and bottom, display outfits on top of each other or side to side?

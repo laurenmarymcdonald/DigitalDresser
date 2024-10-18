@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ClosetMenu: View {
-    @EnvironmentObject var closetImages: Collection
+    @EnvironmentObject var collection: Collection
     private var buttonColor = Color(red: 187/255, green: 145/255, blue: 250/255)
     var body: some View {
         NavigationStack {
@@ -17,7 +17,7 @@ struct ClosetMenu: View {
                 .fontWeight(.black)
                 .offset(y: -250)
             NavigationLink("Tops") {
-                Closet(array: $closetImages.topItems, title: "Tops")
+                Closet(array: $collection.topItems, title: "Tops")
             }
             .font(.custom("Georgia", size: 30))
             .buttonStyle(.borderedProminent)
@@ -26,7 +26,15 @@ struct ClosetMenu: View {
             .foregroundColor(.white)
             
             NavigationLink("Bottoms") {
-                Closet(array: $closetImages.bottomItems, title: "Bottoms")
+                Closet(array: $collection.bottomItems, title: "Bottoms")
+            }
+            .font(.custom("Georgia", size: 30))
+            .buttonStyle(.borderedProminent)
+            .tint(buttonColor)
+            .fontWeight(.black)
+            .foregroundColor(.white)
+            NavigationLink("Other") {
+                Closet(array: $collection.otherItems, title: "Other")
             }
             .font(.custom("Georgia", size: 30))
             .buttonStyle(.borderedProminent)

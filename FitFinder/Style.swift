@@ -8,29 +8,30 @@
 import SwiftUI
 
 struct Style: View {
-    @EnvironmentObject var closetImages: Collection
+    @EnvironmentObject var collection: Collection
     @State private var imgIndexTops: Int = 0
     @State private var imgIndexBottoms: Int = 0
     var body: some View {
         VStack{
-            if($closetImages.topItems.isEmpty && $closetImages.bottomItems.isEmpty) {
+            if($collection.topItems.isEmpty && $collection.bottomItems.isEmpty) {
                 Text("No Items in Closet")
                     .font(.custom("Georgia", size: 30))
                     .padding()
             }
             else {
                 Button("Save Outfit") {
-                    OutfitItem(clothingItemTop: closetImages.topItems[imgIndexTops],clothingItemBottom: closetImages.bottomItems[imgIndexBottoms])
+                    let newItem = OutfitItem(clothingItemTop: collection.topItems[imgIndexTops],clothingItemBottom: collection.bottomItems[imgIndexBottoms], occasion: "Type Occasion", date: "1/1/2024", worn: false)
+                    collection.outfits.append(newItem)
                 }
-                if($closetImages.topItems.isEmpty) {
+                if($collection.topItems.isEmpty) {
                     Text("No Top Items in Closet")
                         .font(.custom("Georgia", size: 30))
                         .padding()
                 }
                 else {
-                    ItemImageView(clothingItem: closetImages.topItems[imgIndexTops], index: imgIndexTops, title: "Tops",array: $closetImages.topItems)
+                    ItemImageView(clothingItem: collection.topItems[imgIndexTops], index: imgIndexTops, title: "Tops",array: $collection.topItems)
                         .onTapGesture {
-                            if(imgIndexTops < closetImages.topItems.count-1) {
+                            if(imgIndexTops < collection.topItems.count-1) {
                                 imgIndexTops+=1
                             }
                             else {
@@ -39,15 +40,15 @@ struct Style: View {
                         }
                 }
                 Spacer()
-                if($closetImages.bottomItems.isEmpty) {
+                if($collection.bottomItems.isEmpty) {
                     Text("No Bottom Items in Closet")
                         .font(.custom("Georgia", size: 30))
                         .padding()
                 }
                 else{
-                    ItemImageView(clothingItem: closetImages.bottomItems[imgIndexBottoms], index: imgIndexBottoms, title: "Tops",array: $closetImages.bottomItems)
+                    ItemImageView(clothingItem: collection.bottomItems[imgIndexBottoms], index: imgIndexBottoms, title: "Tops",array: $collection.bottomItems)
                         .onTapGesture {
-                            if(imgIndexBottoms < closetImages.bottomItems.count-1) {
+                            if(imgIndexBottoms < collection.bottomItems.count-1) {
                                 imgIndexBottoms+=1
                             }
                             else {
