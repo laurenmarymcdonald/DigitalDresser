@@ -25,7 +25,7 @@ struct StyleMenu: View {
             .fontWeight(.black)
             .foregroundColor(.white)
             
-            NavigationLink("View Past Outfit") {
+            NavigationLink("View Saved Outfit") {
                 OutfitCloset()
             }
             .font(.custom("Georgia", size: 30))

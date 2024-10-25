@@ -7,12 +7,26 @@
 
 import SwiftUI
 
+
 @main
 struct FitFinderApp: App {
-    @StateObject private var closetImages = Collection()
+    @Environment(\.scenePhase) private var scenePhase
+    @StateObject var collection = Collection()
+    
     var body: some Scene {
         WindowGroup {
-            MainView().environmentObject(closetImages)
+            MainView()
+                .environmentObject(collection)
+                .onAppear {
+                    collection.loadData()
+                }
+                .onChange(of: scenePhase) {
+                    if scenePhase == .background {
+                        collection.saveData()
+                    }
+                }
         }
     }
 }
+ 
+

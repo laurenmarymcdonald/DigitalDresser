@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
+import PhotosUI
+public struct CodableImage: Codable, Hashable {
+    public let photo: Data
+    public init(photo:UIImage) {
+        self.photo = photo.pngData()!
+    }
+    
+}

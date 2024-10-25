@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OutfitItem {
+struct OutfitItem: Codable {
     var clothingItemTop: ClothingItem
     var clothingItemBottom: ClothingItem
     var occasion: String
@@ -18,20 +18,20 @@ struct OutfitInfo: View {
     @EnvironmentObject var closetImages: Collection
     @Environment(\.dismiss) var dismiss
     var outfitItem: OutfitItem
-    @Binding var occasion: String
-    @Binding var date: String
-    @Binding var worn: Bool
+    @State var occasion: String
+    @State var date: String
+    @State var worn: Bool
     let wornList = ["Never", "Once", "Twice", "Multiple"]
     let lengthsTops = ["Short Sleeve", "Long Sleeve", "Sleeveless", "Tube top", "Crop Top"]
     let lengthsBottoms = ["Shorts", "Jeans", "Pants", "Short skirt", "Midi Skirt", "Long Skirt"]
     var body: some View {
         NavigationStack {
             Form {
-                Image(uiImage: outfitItem.clothingItemTop.image)
+                Image(uiImage: UIImage(data: outfitItem.clothingItemTop.image.photo)!)
                     .resizable()
                     .frame(width: 200, height: 230,alignment: .center) //center
                     .scaledToFit()
-                Image(uiImage: outfitItem.clothingItemBottom.image)
+                Image(uiImage: UIImage(data: outfitItem.clothingItemBottom.image.photo)!)
                     .resizable()
                     .frame(width: 200, height: 230,alignment: .center) //center
                     .scaledToFit()
