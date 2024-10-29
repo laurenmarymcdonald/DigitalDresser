@@ -5,19 +5,6 @@
 //  Created by Lauren McDonald on 10/1/24.
 //
 
-/*import SwiftUI
-
-struct ClothingItem: Codable {
-    var name: String
-    var image: CodableImage
-    var size: String
-    var length: String
-    var price: String
-    var extraInfo: String
-    var color: Color //make color codeable
-    var favorite: Bool
-}*/
-
 import SwiftUI
 
 struct ClothingItem: Codable {
@@ -158,12 +145,14 @@ struct ClothingInfo: View {
                         Button(action: {
                             favorite.toggle()
                             if favorite {
-                                if !collection.favorites.contains(where: { $0.name == clothingItem.name }) {
+                                if !collection.favorites.contains(where: { $0.id == clothingItem.id }) {
                                     collection.favorites.append(clothingItem)
+                                    favorite = true
                                 }
                             } else {
-                                if let index = collection.favorites.firstIndex(where: { $0.name == clothingItem.name }) {
-                                    collection.favorites.remove(at: index)
+                                if !collection.favorites.contains(where: { $0.id == clothingItem.id }) {
+                                    //collection.deleteImage(at: index, from: "Favorite") FIX
+                                    favorite = true
                                 }
                             }
                         }) {
