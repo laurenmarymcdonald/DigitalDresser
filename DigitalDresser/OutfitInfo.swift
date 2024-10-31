@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OutfitItem: Codable {
+    var id = UUID()
     var clothingItemTop: ClothingItem
     var clothingItemBottom: ClothingItem
     var occasion: String
@@ -15,40 +16,40 @@ struct OutfitItem: Codable {
     var worn: Bool
 }
 struct OutfitInfo: View {
-    @EnvironmentObject var closetImages: Collection
+    @EnvironmentObject var collection: Collection
     @Environment(\.dismiss) var dismiss
     var outfitItem: OutfitItem
-    @State var occasion: String
-    @State var date: String
-    @State var worn: Bool
     let wornList = ["Never", "Once", "Twice", "Multiple"]
     let lengthsTops = ["Short Sleeve", "Long Sleeve", "Sleeveless", "Tube top", "Crop Top"]
     let lengthsBottoms = ["Shorts", "Jeans", "Pants", "Short skirt", "Midi Skirt", "Long Skirt"]
+    var outfitItemIndex: Int {
+        collection.outfits.firstIndex(where: {$0.id == outfitItem.id})!
+    }
     var body: some View {
         NavigationStack {
             Form {
                 Image(uiImage: UIImage(data: outfitItem.clothingItemTop.image.photo)!)
                     .resizable()
-                    .frame(width: 200, height: 230,alignment: .center) //center
+                    .frame(width: 200, height: 230,alignment: .center)
                     .scaledToFit()
                 Image(uiImage: UIImage(data: outfitItem.clothingItemBottom.image.photo)!)
                     .resizable()
-                    .frame(width: 200, height: 230,alignment: .center) //center
+                    .frame(width: 200, height: 230,alignment: .center)
                     .scaledToFit()
                 Section {
                     Text("Top Size: " + outfitItem.clothingItemTop.size)
                     Text("Bottom Size: " + outfitItem.clothingItemBottom.size)
                     LabeledContent {
-                        TextField("Enter Occasion", text: $occasion)
+                        TextField("Enter Occasion", text: $collection.outfits[outfitItemIndex].occasion)
                     } label: {
                       Text("Occasion")
                     }
                     LabeledContent {
-                        TextField("Enter Date", text: $date)
+                        TextField("Enter Date", text: $collection.outfits[outfitItemIndex].date)
                     } label: {
                       Text("Date")
                     }
-                    Picker("Worn before", selection: $worn) {
+                    Picker("Worn before", selection: $collection.outfits[outfitItemIndex].worn) {
                         ForEach(wornList, id: \.self) {
                             Text($0)
                         }

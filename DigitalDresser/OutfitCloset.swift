@@ -16,16 +16,17 @@ struct OutfitCloset: View {
     var body: some View {
         NavigationStack {
             NavigationLink("Add Outfit") {
-                Style()
+                Style(isCreatingOutfit: true)
             }
             .font(.custom("Georgia", size: 30))
             .buttonStyle(.borderedProminent)
             .tint(buttonColor)
             .fontWeight(.black)
             .foregroundColor(.white)
+            
             ScrollView(.vertical) {
                 ForEach(collection.outfits.indices, id: \.self) { index in
-                    OutfitImageView(index: index, outfits: collection.outfits)
+                    OutfitImageView(index: index, outfits: collection.outfits, isCreatingOutfit: false)
                     Spacer()
                 }
             }
@@ -34,12 +35,13 @@ struct OutfitCloset: View {
 }
 
 
-
 struct OutfitImageView: View {
     var index: Int
     var outfits: [OutfitItem]
     @EnvironmentObject var collection: Collection
     @State var showInfo = false
+    var isCreatingOutfit: Bool
+    
     var body: some View {
         VStack {
             Image(uiImage: UIImage(data: outfits[index].clothingItemTop.image.photo)!)
@@ -52,27 +54,24 @@ struct OutfitImageView: View {
                 .frame(width: 200, height: 250)
                 .scaledToFit()
                 .padding(5)
-            HStack {
-                Button(action: {
-                    collection.deleteImage(at: index, from: "outfits")
-                }) {
-                    Image(systemName: "trash")
-                        .foregroundColor(.red)
-                }
-                
-                Button(action: { self.showInfo.toggle() }) {
-                    Image(systemName: "info.circle").foregroundColor(.blue)
-                }
-                .sheet(isPresented: $showInfo) {
-                    OutfitInfo(
-                        outfitItem: outfits[index],
-                        occasion: outfits[index].occasion,
-                        date: outfits[index].date,
-                        worn: outfits[index].worn
-                    )
+            
+            if !isCreatingOutfit {
+                HStack {
+                    Button(action: {
+                        collection.deleteImage(at: index, from: "outfits")
+                    }) {
+                        Image(systemName: "trash")
+                            .foregroundColor(.red)
+                    }
+                    
+                    Button(action: { self.showInfo.toggle() }) {
+                        Image(systemName: "info.circle").foregroundColor(.blue)
+                    }
+                    .sheet(isPresented: $showInfo) {
+                        OutfitInfo(outfitItem: outfits[index])
+                    }
                 }
             }
         }
     }
 }
-

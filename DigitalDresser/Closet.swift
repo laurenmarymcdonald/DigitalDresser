@@ -24,7 +24,7 @@ struct TopsCloset: View {
                                 if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
                                     if let loadedImage = UIImage(data: data) {
                                         image = CodableImage(photo: loadedImage)
-                                        let newItem = ClothingItem(name: "Tops", image: image, size: "None", length: "None", price: "Enter Price", extraInfo: "Enter Info", color: bgColor, favorite: false)
+                                        let newItem = ClothingItem(name: "Tops", image: image, size: "None", length: "None", price: "Enter Price", extraInfo: "Enter Info", type: "Type", color: bgColor, favorite: false)
                                         collection.addItem(newItem, to: "Tops")
                                     } else {
                                         print("Failed to load the image")
@@ -62,7 +62,7 @@ struct BottomsCloset: View {
                                 if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
                                     if let loadedImage = UIImage(data: data) {
                                         image = CodableImage(photo: loadedImage)
-                                        let newItem = ClothingItem(name: "Bottoms", image: image, size: "None", length: "None", price: "Enter Price", extraInfo: "Enter Info", color: bgColor, favorite: false)
+                                        let newItem = ClothingItem(name: "Bottoms", image: image, size: "None", length: "None", price: "Enter Price", extraInfo: "Enter Info", type: "Type", color: bgColor, favorite: false)
                                         collection.addItem(newItem, to: "Bottoms")
                                     } else {
                                         print("Failed to load the image")
@@ -99,7 +99,7 @@ struct OtherCloset: View {
                                 if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
                                     if let loadedImage = UIImage(data: data) {
                                         image = CodableImage(photo: loadedImage)
-                                        let newItem = ClothingItem(name: "Other", image: image, size: "None", length: "None", price: "Enter Price", extraInfo: "Enter Info", color: bgColor, favorite: false)
+                                        let newItem = ClothingItem(name: "Other", image: image, size: "None", length: "None", price: "Enter Price", extraInfo: "Enter Info", type: "Type", color: bgColor, favorite: false)
                                         collection.addItem(newItem, to: "Other")
                                     } else {
                                         print("Failed to load the image")
@@ -131,13 +131,13 @@ struct FavoritesCloset: View {
         ScrollView {
             VStack {
                 Spacer().frame(height: 40)
-                Text("Home")
+                Text("Favorites")
                     .font(.custom("Georgia", size: 37))
                     .fontWeight(.black)
                 Spacer().frame(height: 50)
                 }
             ForEach(collection.favorites.indices, id: \.self) { index in
-                FavoriteItemImageView(clothingItem: collection.favorites[index], index: index, title: "Favorites", array: collection.favorites)
+                FavoriteItemImageView(clothingItem: collection.favorites[index])
                         .padding(10)
                 }
             }
@@ -172,13 +172,7 @@ struct ItemImageView: View {
                 .sheet(isPresented: $showInfo) {
                     ClothingInfo(
                         clothingItem: clothingItem,
-                        name: title,
-                        size: array[index].size,
-                        length: array[index].length,
-                        price: array[index].price,
-                        extraInfo: array[index].extraInfo,
-                        color: array[index].color,
-                        favorite: array[index].favorite
+                        name: title
                     )
                 }
             }
@@ -187,9 +181,6 @@ struct ItemImageView: View {
 }
 struct FavoriteItemImageView: View {
     var clothingItem: ClothingItem
-    var index: Int
-    var title: String
-    var array: [ClothingItem]
     @EnvironmentObject var collection: Collection
     @State var showInfo = false
     var body: some View {
@@ -199,24 +190,6 @@ struct FavoriteItemImageView: View {
                 .frame(width: 200, height: 250)
                 .scaledToFit()
                 .padding(5)
-            
-            HStack {
-                Button(action: { self.showInfo.toggle() }) {
-                    Image(systemName: "info.circle").foregroundColor(.blue)
-                }
-                .sheet(isPresented: $showInfo) {
-                    ClothingInfo(
-                        clothingItem: clothingItem,
-                        name: title,
-                        size: array[index].size,
-                        length: array[index].length,
-                        price: array[index].price,
-                        extraInfo: array[index].extraInfo,
-                        color: array[index].color,
-                        favorite: array[index].favorite
-                    )
-                }
-            }
         }
     }
 }

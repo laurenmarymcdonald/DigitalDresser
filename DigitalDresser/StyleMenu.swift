@@ -17,7 +17,7 @@ struct StyleMenu: View {
                 .fontWeight(.black)
                 .offset(y: -250)
             NavigationLink("Make an Outfit") {
-                Style()
+                Style(isCreatingOutfit: true)
             }
             .font(.custom("Georgia", size: 30))
             .buttonStyle(.borderedProminent)
