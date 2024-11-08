@@ -13,7 +13,39 @@ struct OutfitItem: Codable {
     var clothingItemBottom: ClothingItem
     var occasion: String
     var date: String
-    var worn: Bool
+    var worn: String
+    init(id: UUID, clothingItemTop: ClothingItem, clothingItemBottom: ClothingItem, occasion: String, date: String, worn: String) {
+            self.id = id
+            self.clothingItemTop = clothingItemTop
+            self.clothingItemBottom = clothingItemBottom
+            self.occasion = occasion
+            self.date = date
+            self.worn = worn
+        }
+    enum CodingKeys: String, CodingKey {
+        case id, clothingItemTop, clothingItemBottom, occasion, date, worn
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(clothingItemTop, forKey: .clothingItemTop)
+        try container.encode(clothingItemBottom, forKey: .clothingItemBottom)
+        try container.encode(occasion, forKey: .occasion)
+        try container.encode(date, forKey: .date)
+        try container.encode(worn, forKey: .worn)
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        clothingItemTop = try container.decode(ClothingItem.self, forKey: .clothingItemTop)
+        clothingItemBottom = try container.decode(ClothingItem.self, forKey: .clothingItemBottom)
+        occasion = try container.decode(String.self, forKey: .occasion)
+        date = try container.decode(String.self, forKey: .date)
+        worn = try container.decode(String.self, forKey: .worn)
+        
+    }
 }
 struct OutfitInfo: View {
     @EnvironmentObject var collection: Collection

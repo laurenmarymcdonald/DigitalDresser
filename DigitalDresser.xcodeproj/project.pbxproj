@@ -24,25 +24,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AD268B0F2CA5D0DB004973CA /* FitFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD268B1F2CA5D0DC004973CA /* FitFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD268B292CA5D0DC004973CA /* FitFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD268B0F2CA5D0DB004973CA /* DigitalDresser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalDresser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD268B1F2CA5D0DC004973CA /* DigitalDresserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigitalDresserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD268B292CA5D0DC004973CA /* DigitalDresserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigitalDresserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AD7E9A062CD3E6DA006360F9 /* Exceptions for "DigitalDresser" folder in "DigitalDresser" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AD268B0E2CA5D0DB004973CA /* DigitalDresser */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		AD268B112CA5D0DB004973CA /* FitFinder */ = {
+		AD268B112CA5D0DB004973CA /* DigitalDresser */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FitFinder;
+			exceptions = (
+				AD7E9A062CD3E6DA006360F9 /* Exceptions for "DigitalDresser" folder in "DigitalDresser" target */,
+			);
+			path = DigitalDresser;
 			sourceTree = "<group>";
 		};
-		AD268B222CA5D0DC004973CA /* FitFinderTests */ = {
+		AD268B222CA5D0DC004973CA /* DigitalDresserTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FitFinderTests;
+			path = DigitalDresserTests;
 			sourceTree = "<group>";
 		};
-		AD268B2C2CA5D0DC004973CA /* FitFinderUITests */ = {
+		AD268B2C2CA5D0DC004973CA /* DigitalDresserUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FitFinderUITests;
+			path = DigitalDresserUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +88,9 @@
 		AD268B062CA5D0DB004973CA = {
 			isa = PBXGroup;
 			children = (
-				AD268B112CA5D0DB004973CA /* FitFinder */,
-				AD268B222CA5D0DC004973CA /* FitFinderTests */,
-				AD268B2C2CA5D0DC004973CA /* FitFinderUITests */,
+				AD268B112CA5D0DB004973CA /* DigitalDresser */,
+				AD268B222CA5D0DC004973CA /* DigitalDresserTests */,
+				AD268B2C2CA5D0DC004973CA /* DigitalDresserUITests */,
 				AD268B102CA5D0DB004973CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +98,9 @@
 		AD268B102CA5D0DB004973CA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AD268B0F2CA5D0DB004973CA /* FitFinder.app */,
-				AD268B1F2CA5D0DC004973CA /* FitFinderTests.xctest */,
-				AD268B292CA5D0DC004973CA /* FitFinderUITests.xctest */,
+				AD268B0F2CA5D0DB004973CA /* DigitalDresser.app */,
+				AD268B1F2CA5D0DC004973CA /* DigitalDresserTests.xctest */,
+				AD268B292CA5D0DC004973CA /* DigitalDresserUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AD268B0E2CA5D0DB004973CA /* FitFinder */ = {
+		AD268B0E2CA5D0DB004973CA /* DigitalDresser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD268B332CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "FitFinder" */;
+			buildConfigurationList = AD268B332CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "DigitalDresser" */;
 			buildPhases = (
 				AD268B0B2CA5D0DB004973CA /* Sources */,
 				AD268B0C2CA5D0DB004973CA /* Frameworks */,
@@ -108,18 +121,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				AD268B112CA5D0DB004973CA /* FitFinder */,
+				AD268B112CA5D0DB004973CA /* DigitalDresser */,
 			);
-			name = FitFinder;
+			name = DigitalDresser;
 			packageProductDependencies = (
 			);
 			productName = FitFinder;
-			productReference = AD268B0F2CA5D0DB004973CA /* FitFinder.app */;
+			productReference = AD268B0F2CA5D0DB004973CA /* DigitalDresser.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AD268B1E2CA5D0DC004973CA /* FitFinderTests */ = {
+		AD268B1E2CA5D0DC004973CA /* DigitalDresserTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD268B362CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "FitFinderTests" */;
+			buildConfigurationList = AD268B362CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "DigitalDresserTests" */;
 			buildPhases = (
 				AD268B1B2CA5D0DC004973CA /* Sources */,
 				AD268B1C2CA5D0DC004973CA /* Frameworks */,
@@ -131,18 +144,18 @@
 				AD268B212CA5D0DC004973CA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				AD268B222CA5D0DC004973CA /* FitFinderTests */,
+				AD268B222CA5D0DC004973CA /* DigitalDresserTests */,
 			);
-			name = FitFinderTests;
+			name = DigitalDresserTests;
 			packageProductDependencies = (
 			);
 			productName = FitFinderTests;
-			productReference = AD268B1F2CA5D0DC004973CA /* FitFinderTests.xctest */;
+			productReference = AD268B1F2CA5D0DC004973CA /* DigitalDresserTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AD268B282CA5D0DC004973CA /* FitFinderUITests */ = {
+		AD268B282CA5D0DC004973CA /* DigitalDresserUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD268B392CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "FitFinderUITests" */;
+			buildConfigurationList = AD268B392CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "DigitalDresserUITests" */;
 			buildPhases = (
 				AD268B252CA5D0DC004973CA /* Sources */,
 				AD268B262CA5D0DC004973CA /* Frameworks */,
@@ -154,13 +167,13 @@
 				AD268B2B2CA5D0DC004973CA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				AD268B2C2CA5D0DC004973CA /* FitFinderUITests */,
+				AD268B2C2CA5D0DC004973CA /* DigitalDresserUITests */,
 			);
-			name = FitFinderUITests;
+			name = DigitalDresserUITests;
 			packageProductDependencies = (
 			);
 			productName = FitFinderUITests;
-			productReference = AD268B292CA5D0DC004973CA /* FitFinderUITests.xctest */;
+			productReference = AD268B292CA5D0DC004973CA /* DigitalDresserUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +199,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AD268B0A2CA5D0DB004973CA /* Build configuration list for PBXProject "FitFinder" */;
+			buildConfigurationList = AD268B0A2CA5D0DB004973CA /* Build configuration list for PBXProject "DigitalDresser" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +213,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AD268B0E2CA5D0DB004973CA /* FitFinder */,
-				AD268B1E2CA5D0DC004973CA /* FitFinderTests */,
-				AD268B282CA5D0DC004973CA /* FitFinderUITests */,
+				AD268B0E2CA5D0DB004973CA /* DigitalDresser */,
+				AD268B1E2CA5D0DC004973CA /* DigitalDresserTests */,
+				AD268B282CA5D0DC004973CA /* DigitalDresserUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +271,12 @@
 /* Begin PBXTargetDependency section */
 		AD268B212CA5D0DC004973CA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AD268B0E2CA5D0DB004973CA /* FitFinder */;
+			target = AD268B0E2CA5D0DB004973CA /* DigitalDresser */;
 			targetProxy = AD268B202CA5D0DC004973CA /* PBXContainerItemProxy */;
 		};
 		AD268B2B2CA5D0DC004973CA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AD268B0E2CA5D0DB004973CA /* FitFinder */;
+			target = AD268B0E2CA5D0DB004973CA /* DigitalDresser */;
 			targetProxy = AD268B2A2CA5D0DC004973CA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -395,21 +408,22 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FitFinder/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DigitalDresser/Preview Content\"";
 				DEVELOPMENT_TEAM = NGRG5GR5CU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DigitalDresser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Lauren-McDonald.FitFinder";
+				PRODUCT_BUNDLE_IDENTIFIER = "Lauren-McDonald.DigitalDresser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -424,21 +438,22 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FitFinder/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DigitalDresser/Preview Content\"";
 				DEVELOPMENT_TEAM = NGRG5GR5CU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DigitalDresser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Lauren-McDonald.FitFinder";
+				PRODUCT_BUNDLE_IDENTIFIER = "Lauren-McDonald.DigitalDresser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -460,7 +475,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitFinder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FitFinder";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DigitalDresser.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DigitalDresser";
 			};
 			name = Debug;
 		};
@@ -478,7 +493,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitFinder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FitFinder";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DigitalDresser.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DigitalDresser";
 			};
 			name = Release;
 		};
@@ -517,7 +532,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AD268B0A2CA5D0DB004973CA /* Build configuration list for PBXProject "FitFinder" */ = {
+		AD268B0A2CA5D0DB004973CA /* Build configuration list for PBXProject "DigitalDresser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD268B312CA5D0DC004973CA /* Debug */,
@@ -526,7 +541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD268B332CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "FitFinder" */ = {
+		AD268B332CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "DigitalDresser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD268B342CA5D0DC004973CA /* Debug */,
@@ -535,7 +550,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD268B362CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "FitFinderTests" */ = {
+		AD268B362CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "DigitalDresserTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD268B372CA5D0DC004973CA /* Debug */,
@@ -544,7 +559,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD268B392CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "FitFinderUITests" */ = {
+		AD268B392CA5D0DC004973CA /* Build configuration list for PBXNativeTarget "DigitalDresserUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD268B3A2CA5D0DC004973CA /* Debug */,

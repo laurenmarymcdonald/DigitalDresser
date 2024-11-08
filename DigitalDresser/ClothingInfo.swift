@@ -16,8 +16,7 @@ struct ClothingInfo: View {
     let lengthsBottoms = ["Shorts", "Jeans", "Pants", "Short skirt", "Midi Skirt", "Long Skirt"]
     let types = ["Dress", "Coat", "Sweater", "Jacket", "Shoes", "Accessories", "Other"]
     var name: String
-    var buttonColor = Color(red: 187/255, green: 145/255, blue: 250/255)
-    @State private var favorite = false
+    var buttonColor = Color(red: 205/255, green: 175/255, blue: 250/255)
     private var selectedArray: Binding<[ClothingItem]> {
         switch name {
         case "Tops":
@@ -70,7 +69,7 @@ struct ClothingInfo: View {
                             TextField("Enter Price", text: selectedArray[index].price)
                         } label: {
                             Text("Price")
-                        }
+                        }.keyboardType(.decimalPad)
                         
                         LabeledContent {
                             TextField("Enter Info", text: selectedArray[index].extraInfo)
@@ -79,20 +78,15 @@ struct ClothingInfo: View {
                         }
                         
                         ColorPicker("Color", selection: selectedArray[index].color)
-                        
-                        LabeledContent {
+                        LabeledContent{
                             Button(action: {
-                                favorite.toggle()
-                                if favorite {
-                                    collection.addFavorite(clothingItem)
-                                } else {
-                                    collection.removeFavorite(clothingItem)
-                                }
+                                selectedArray[index].favorite.wrappedValue.toggle()
+                                collection.createFavorites()
                             }) {
-                                Image(systemName: favorite ? "heart.fill" : "heart")
-                                    .foregroundColor(buttonColor)
+                                Image(systemName: selectedArray[index].favorite.wrappedValue ? "heart.fill" : "heart")
+                                    .foregroundColor(.accentColor)
                             }
-                        } label: {
+                        }label: {
                             Text("Favorite")
                         }
                     }
@@ -106,9 +100,7 @@ struct ClothingInfo: View {
                     }
                 }
             }
-            .onAppear {
-                favorite = collection.isFavorite(clothingItem)
-            }
         }
     }
 }
+

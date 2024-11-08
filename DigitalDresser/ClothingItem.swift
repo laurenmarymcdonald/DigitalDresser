@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-struct ClothingItem: Codable,Equatable {
+struct ClothingItem: Codable,Equatable, Identifiable {
     var id = UUID()
     var name: String
     var image: CodableImage

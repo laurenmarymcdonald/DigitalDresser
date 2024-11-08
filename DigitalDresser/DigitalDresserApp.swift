@@ -9,7 +9,7 @@ import SwiftUI
 
 
 @main
-struct FitFinderApp: App {
+struct DigitalDresser: App {
     @Environment(\.scenePhase) private var scenePhase
     @StateObject var collection = Collection()
     

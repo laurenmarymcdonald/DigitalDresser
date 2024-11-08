@@ -12,8 +12,9 @@ struct OutfitCloset: View {
     @EnvironmentObject var collection: Collection
     @State var image: CodableImage = CodableImage(photo: UIImage(systemName: "photo")!)
     @State private var bgColor = Color.white
-    var buttonColor = Color(red: 187/255, green: 145/255, blue: 250/255)
+    var buttonColor = Color(red: 205/255, green: 175/255, blue: 250/255)
     var body: some View {
+        ScrollView(){
         NavigationStack {
             NavigationLink("Add Outfit") {
                 Style(isCreatingOutfit: true)
@@ -23,12 +24,10 @@ struct OutfitCloset: View {
             .tint(buttonColor)
             .fontWeight(.black)
             .foregroundColor(.white)
-            
-            ScrollView(.vertical) {
-                ForEach(collection.outfits.indices, id: \.self) { index in
-                    OutfitImageView(index: index, outfits: collection.outfits, isCreatingOutfit: false)
-                    Spacer()
-                }
+            }.frame(maxWidth: .infinity)
+            ForEach(collection.outfits.indices, id: \.self) { index in
+                OutfitImageView(index: index, outfits: collection.outfits, isCreatingOutfit: false)
+                Spacer()
             }
         }
     }

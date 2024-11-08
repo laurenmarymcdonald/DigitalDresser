@@ -6,9 +6,9 @@
 //
 
 import Testing
-@testable import FitFinder
+@testable import DigitalDresser
 
-struct FitFinderTests {
+struct DigitalDresserTests {
 
     @Test func example() async throws {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.

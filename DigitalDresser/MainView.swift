@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var collection: Collection
-    private var buttonColor = Color(red: 187/255, green: 145/255, blue: 250/255)
+    private var buttonColor = Color(red: 205/255, green: 175/255, blue: 250/255)
     var body: some View {
         TabView {
             ContentView()

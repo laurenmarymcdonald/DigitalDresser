@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ClosetMenu: View {
     @EnvironmentObject var collection: Collection
-    private var buttonColor = Color(red: 187/255, green: 145/255, blue: 250/255)
+    private var buttonColor = Color(red: 205/255, green: 175/255, blue: 250/255)
     private var backgroundColor = Color(red: 240/255, green: 230/255, blue: 255/255)
 
     var body: some View {
@@ -46,15 +46,7 @@ struct ClosetMenu: View {
                 .tint(buttonColor)
                 .fontWeight(.black)
                 .foregroundColor(.white)
-                
-                NavigationLink("Favorites") {
-                    FavoritesCloset()
-                }
-                .font(.custom("Georgia", size: 30))
-                .buttonStyle(.borderedProminent)
-                .tint(buttonColor)
-                .fontWeight(.black)
-                .foregroundColor(.white)
+            
             }
             Spacer()
         }

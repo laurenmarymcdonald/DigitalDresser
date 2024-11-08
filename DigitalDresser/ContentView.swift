@@ -2,16 +2,68 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var collection: Collection
-    private var buttonColor = Color(red: 187/255, green: 145/255, blue: 250/255)
-    
+    private var buttonColor = Color(red: 205/255, green: 175/255, blue: 250/255)
+    @State var showInfo: Bool = false
     var body: some View {
         NavigationStack {
-            VStack {
-                Spacer().frame(height: 40)
-                Text("Home")
-                    .font(.custom("Georgia", size: 37))
-                    .fontWeight(.black)
-                Spacer().frame(height: 150)
+                VStack{
+                    HStack{
+                        Spacer()
+                        VStack {
+                            Button(action: { self.showInfo.toggle() }) {
+                                Image(systemName: "info.circle").foregroundColor(.accentColor)
+                            }//FIX DOES NOT GO TO TOP RIGHT CORNER
+                            .font(.title)
+                            .sheet(isPresented: $showInfo) {
+                                Text("App Information")
+                                    .font(.custom("Georgia", size: 30))
+                                    .fontWeight(.black)
+                                Spacer().frame(height: 150)
+                                Text("How to add to closet")
+                                    .multilineTextAlignment(.center)
+                                    .font(.custom("Georgia", size: 25))
+                                    .fontWeight(.black)
+                                Spacer().frame(height: 15)
+                                Text("1) Click on My Closet")
+                                    .font(.custom("Georgia", size: 20))
+                                    .multilineTextAlignment(.center)
+                                Text("2) Click on type of item")
+                                    .font(.custom("Georgia", size: 20))
+                                Text("3) Press Add and select image from camera roll")
+                                    .font(.custom("Georgia", size: 20))
+                                    .multilineTextAlignment(.center)
+                                Text("4) Click on Info button to add descriptions and Trash button to delete")
+                                    .font(.custom("Georgia", size: 20))
+                                    .multilineTextAlignment(.center)
+                                Spacer().frame(height: 35)
+                                Text("How to make an outfit")
+                                    .font(.custom("Georgia", size: 25))
+                                    .multilineTextAlignment(.center)
+                                    .fontWeight(.black)
+                                Spacer().frame(height: 15)
+                                Text("1) Click on Style Clothing")
+                                    .font(.custom("Georgia", size: 20))
+                                    .multilineTextAlignment(.center)
+                                Text("2) Click on Make an Outfit")
+                                    .font(.custom("Georgia", size: 20))
+                                    .multilineTextAlignment(.center)
+                                Text("3) Tap on top or bottom image to view a different clothing item")
+                                    .font(.custom("Georgia", size: 20))
+                                    .multilineTextAlignment(.center)
+                                Text("4) Press Save and view your outfit in previous screen, View Outfits")
+                                    .font(.custom("Georgia", size: 20))
+                                    .multilineTextAlignment(.center)
+                                Spacer().frame(height: 150)
+                            }
+                        }
+                    }
+                    VStack {
+                        Spacer().frame(height: 40)
+                        Text("Home")
+                            .font(.custom("Georgia", size: 37))
+                            .fontWeight(.black)
+                        Spacer().frame(height: 150)
+                }
                 NavigationLink(destination: ClosetMenu()) {
                     Label("My Closet", systemImage: "hanger")
                 }
@@ -22,7 +74,7 @@ struct ContentView: View {
                 .foregroundColor(.white)
                 
                 NavigationLink(destination: StyleMenu()) {
-                    Label("Style Clothing", systemImage: "tshirt")
+                    Label("Outfits", systemImage: "tshirt")
                 }
                 .font(.custom("Georgia", size: 30))
                 .buttonStyle(.borderedProminent)

@@ -125,7 +125,17 @@ class Collection: ObservableObject, Codable {
     func isFavorite(_ item: ClothingItem) -> Bool {
         favorites.contains { $0.id == item.id }
     }
-
-        
+    func createFavorites() {
+        favorites.removeAll()
+        for item in topItems {
+            if(item.favorite && !favorites.contains(item)) {
+                favorites.append(item)
+            } }
+        for item in bottomItems {
+            if(item.favorite && !favorites.contains(item)) {
+                favorites.append(item) } }
+        for item in otherItems {
+            if(item.favorite && !favorites.contains(item)) {
+                favorites.append(item)  } }
+    }
 }
-
