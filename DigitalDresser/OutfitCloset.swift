@@ -25,7 +25,7 @@ struct OutfitCloset: View {
             .fontWeight(.black)
             .foregroundColor(.white)
             }.frame(maxWidth: .infinity)
-            ForEach(collection.outfits.indices, id: \.self) { index in
+            ForEach(collection.outfits.indices.reversed(), id: \.self) { index in
                 OutfitImageView(index: index, outfits: collection.outfits, isCreatingOutfit: false)
                 Spacer()
             }

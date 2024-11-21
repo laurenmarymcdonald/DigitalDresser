@@ -12,8 +12,9 @@ struct ContentView: View {
                         VStack {
                             Button(action: { self.showInfo.toggle() }) {
                                 Image(systemName: "info.circle").foregroundColor(.accentColor)
-                            }//FIX DOES NOT GO TO TOP RIGHT CORNER
+                            }
                             .font(.title)
+                            .padding()
                             .sheet(isPresented: $showInfo) {
                                 Text("App Information")
                                     .font(.custom("Georgia", size: 30))
@@ -44,10 +45,10 @@ struct ContentView: View {
                                 Text("1) Click on Style Clothing")
                                     .font(.custom("Georgia", size: 20))
                                     .multilineTextAlignment(.center)
-                                Text("2) Click on Make an Outfit")
+                                Text("2) Click on Outfits")
                                     .font(.custom("Georgia", size: 20))
                                     .multilineTextAlignment(.center)
-                                Text("3) Tap on top or bottom image to view a different clothing item")
+                                Text("3) Tap or swipe on top or bottom image to view a different clothing item")
                                     .font(.custom("Georgia", size: 20))
                                     .multilineTextAlignment(.center)
                                 Text("4) Press Save and view your outfit in previous screen, View Outfits")

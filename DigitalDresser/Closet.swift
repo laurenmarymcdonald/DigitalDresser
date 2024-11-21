@@ -40,7 +40,7 @@ struct TopsCloset: View {
                         .foregroundColor(.white)
                 }
             .frame(maxWidth: .infinity)
-                ForEach(collection.topItems.indices, id: \.self) { index in
+            ForEach(collection.topItems.indices.reversed(), id: \.self) { index in
                     ItemImageView(clothingItem: collection.topItems[index], index: index, title: "Tops", array: collection.topItems, notStyleView: false)
                         .padding(10)
                 }
@@ -78,7 +78,7 @@ struct BottomsCloset: View {
                         .fontWeight(.black)
                         .foregroundColor(.white)
                 }.frame(maxWidth: .infinity)
-            ForEach(collection.bottomItems.indices, id: \.self) { index in
+            ForEach(collection.bottomItems.indices.reversed(), id: \.self) { index in
                 ItemImageView(clothingItem: collection.bottomItems[index], index: index, title: "Bottoms", array: collection.bottomItems, notStyleView: false)
                         .padding(10)
                 }
@@ -115,7 +115,7 @@ struct OtherCloset: View {
                         .fontWeight(.black)
                         .foregroundColor(.white)
                 }.frame(maxWidth: .infinity)
-            ForEach(collection.otherItems.indices, id: \.self) { index in
+            ForEach(collection.otherItems.indices.reversed(), id: \.self) { index in
                 ItemImageView(clothingItem: collection.otherItems[index], index: index, title: "Other", array: collection.otherItems, notStyleView: false)
                         .padding(10)
                 }
@@ -138,7 +138,7 @@ struct FavoritesCloset: View {
                     .fontWeight(.black)
                 Spacer().frame(height: 50)
                 }.frame(maxWidth: .infinity)
-            ForEach(collection.favorites.indices, id: \.self) { index in
+            ForEach(collection.favorites.indices.reversed(), id: \.self) { index in
                 FavoriteItemImageView(clothingItem: collection.favorites[index])
                         .padding(10)
                 }
