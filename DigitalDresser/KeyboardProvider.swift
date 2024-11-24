@@ -7,12 +7,35 @@
 
 import SwiftUI
 
-struct KeyboardProvider: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct KeyboardProvider: ViewModifier {
+
+    var keyboardHeight: Binding<CGFloat>
+
+    func body(content: Content) -> some View {
+        content
+            .onReceive(
+                NotificationCenter.default.publisher(
+                    for: UIResponder.keyboardWillShowNotification),
+                perform: { notification in
+                    guard let userInfo = notification.userInfo,
+                        let keyboardRect = userInfo[
+                            UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
+                    else { return }
+
+                    self.keyboardHeight.wrappedValue = keyboardRect.height
+
+                }
+            ).onReceive(
+                NotificationCenter.default.publisher(
+                    for: UIResponder.keyboardWillHideNotification),
+                perform: { _ in
+                    self.keyboardHeight.wrappedValue = 0
+                })
     }
 }
 
-#Preview {
-    KeyboardProvider()
+extension View {
+    public func keyboardHeight(_ state: Binding<CGFloat>) -> some View {
+        self.modifier(KeyboardProvider(keyboardHeight: state))
+    }
 }

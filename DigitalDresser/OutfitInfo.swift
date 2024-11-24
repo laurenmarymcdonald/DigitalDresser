@@ -88,6 +88,7 @@ struct OutfitInfo: View {
                     }
                 }
             }
+            .modifier(DismissingKeyboard())
             .navigationTitle("Clothing Info")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

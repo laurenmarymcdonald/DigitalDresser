@@ -57,7 +57,7 @@ struct OutfitImageView: View {
             if !isCreatingOutfit {
                 HStack {
                     Button(action: {
-                        collection.deleteImage(at: index, from: "outfits")
+                        collection.deleteImage(at: index, from: "Outfits")
                     }) {
                         Image(systemName: "trash")
                             .foregroundColor(.red)

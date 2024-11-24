@@ -92,6 +92,7 @@ struct ClothingInfo: View {
                     }
                 }
             }
+            .modifier(DismissingKeyboard())
             .navigationTitle("Clothing Info")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -103,4 +104,24 @@ struct ClothingInfo: View {
         }
     }
 }
-
+extension View {
+    func dismissKeyboardOnTap() -> some View {
+        self.modifier(DismissingKeyboard())
+    }
+}
+struct DismissingKeyboard: ViewModifier {
+    func body(content: Content) -> some View {
+        ZStack {
+            Color.clear // Invisible background to capture taps
+                .contentShape(Rectangle()) // Ensures the entire screen captures taps
+                .onTapGesture {
+                    UIApplication.shared.connectedScenes
+                        .compactMap { $0 as? UIWindowScene }
+                        .flatMap { $0.windows }
+                        .first { $0.isKeyWindow }?
+                        .endEditing(true)
+                }
+            content
+        }
+    }
+}

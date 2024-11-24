@@ -85,7 +85,6 @@ class Collection: ObservableObject, Codable {
         default:
             break
         }
-        saveData()
     }
     func addItem(_ item: ClothingItem, to arrayType: String) {
             switch arrayType {
@@ -100,7 +99,6 @@ class Collection: ObservableObject, Codable {
             default:
                 break
             }
-            saveData()
     }
     func updateItem(_ item: ClothingItem) {
         if let index = topItems.firstIndex(where: { $0.id == item.id }) {
@@ -110,7 +108,6 @@ class Collection: ObservableObject, Codable {
         } else if let index = otherItems.firstIndex(where: { $0.id == item.id }) {
             otherItems[index] = item
         }
-        saveData()
     }
     func addFavorite(_ item: ClothingItem) {
             if !isFavorite(item) {

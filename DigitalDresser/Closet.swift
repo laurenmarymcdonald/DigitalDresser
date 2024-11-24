@@ -96,19 +96,20 @@ struct OtherCloset: View {
         ScrollView {
             VStack {
                     PhotosPicker("Add Other", selection: $selectedItem, matching: .images)
-                        .onChange(of: selectedItem) {
-                            Task {
-                                if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
-                                    if let loadedImage = UIImage(data: data) {
-                                        image = CodableImage(photo: loadedImage)
-                                        let newItem = ClothingItem(name: "Other", image: image, size: "None", length: "None", price: "", extraInfo: "", type: "Type", color: bgColor, favorite: false)
-                                        collection.addItem(newItem, to: "Other")
-                                    } else {
-                                        print("Failed to load the image")
-                                    }
+                    .onChange(of: selectedItem) {
+                        Task {
+                            if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
+                                if let loadedImage = UIImage(data: data) {
+                                    image = CodableImage(photo: loadedImage)
+                                    let newItem = ClothingItem(name: "Other", image: image, size: "None", length: "None", price: "", extraInfo: "", type: "Type", color: bgColor, favorite: false)
+                                    collection.addItem(newItem, to: "Other")
+                                } else {
+                                    print("Failed to load the image")
                                 }
                             }
                         }
+                    }
+                //plspush
                         .font(.custom("Georgia", size: 30))
                         .buttonStyle(.borderedProminent)
                         .tint(buttonColor)
