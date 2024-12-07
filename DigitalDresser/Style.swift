@@ -22,7 +22,7 @@ struct Style: View {
                     .font(.custom("Georgia", size: 30))
                     .padding()
             } else {
-                if isCreatingOutfit {
+                if isCreatingOutfit &&  !collection.topItems.isEmpty && !collection.bottomItems.isEmpty {
                     Button("Save Outfit") {
                         let newItem = OutfitItem(
                             id: UUID(),

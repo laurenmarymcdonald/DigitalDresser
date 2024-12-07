@@ -60,7 +60,7 @@ struct ContentView: View {
                     }
                     VStack {
                         Spacer().frame(height: 40)
-                        Text("Home")
+                        Text("DigitalDresser")
                             .font(.custom("Georgia", size: 37))
                             .fontWeight(.black)
                         Spacer().frame(height: 150)

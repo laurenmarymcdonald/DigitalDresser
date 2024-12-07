@@ -23,6 +23,8 @@ struct ClothingInfo: View {
             return $collection.topItems
         case "Bottoms":
             return $collection.bottomItems
+        case "Shoes":
+            return $collection.shoesItems
         case "Favorites":
             return $collection.favorites
         default:
@@ -39,15 +41,17 @@ struct ClothingInfo: View {
                 if let clothingImage = UIImage(data: clothingItem.image.photo) {
                     Image(uiImage: clothingImage)
                         .resizable()
-                        .frame(width: 200, height: 230, alignment: .center)
+                        .centerCropped()
                         .scaledToFit()
                 }
                 
                 if let index = clothingItemIndex {
                     Section {
-                        Picker("Size", selection: selectedArray[index].size) {
-                            ForEach(sizes, id: \.self) {
-                                Text($0)
+                        if name != "Shoes" {
+                            Picker("Size", selection: selectedArray[index].size) {
+                                ForEach(sizes, id: \.self) {
+                                    Text($0)
+                                }
                             }
                         }
                         
@@ -57,7 +61,15 @@ struct ClothingInfo: View {
                                     Text($0)
                                 }
                             }
-                        } else {
+                        }
+                        else if name == "Shoes" {
+                            LabeledContent {
+                                TextField("Enter Shoes Size", text: selectedArray[index].length)
+                            } label: {
+                                Text("Size")
+                            }.keyboardType(.decimalPad)
+                        }
+                        else {
                             Picker("Type", selection: selectedArray[index].type) {
                                 ForEach(types, id: \.self) {
                                     Text($0)
@@ -95,11 +107,17 @@ struct ClothingInfo: View {
             .modifier(DismissingKeyboard())
             .navigationTitle("Clothing Info")
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                /*ToolbarItem(placement: .navigationBarLeading) {
                     Button("Back") {
                         dismiss()
                     }
-                }
+                }*/
+                ToolbarItem(placement: .navigationBarTrailing) {
+                                    Button("Save") {
+                                        collection.saveData()
+                                        dismiss()
+                                    }
+                                }
             }
         }
     }

@@ -40,7 +40,7 @@ struct OutfitImageView: View {
     @EnvironmentObject var collection: Collection
     @State var showInfo = false
     var isCreatingOutfit: Bool
-    
+    @State private var showDeleteConfirmation = false
     var body: some View {
         VStack {
             Image(uiImage: UIImage(data: outfits[index].clothingItemTop.image.photo)!)
@@ -57,12 +57,21 @@ struct OutfitImageView: View {
             if !isCreatingOutfit {
                 HStack {
                     Button(action: {
-                        collection.deleteImage(at: index, from: "Outfits")
-                    }) {
-                        Image(systemName: "trash")
-                            .foregroundColor(.red)
-                    }
-                    
+                            showDeleteConfirmation = true
+                        }) {
+                            Image(systemName: "trash")
+                                .foregroundColor(.red)
+                        }
+                        .alert(isPresented: $showDeleteConfirmation) {
+                            Alert(
+                                title: Text("Confirm Deletion"),
+                                message: Text("Are you sure you want to delete this item?"),
+                                primaryButton: .destructive(Text("Delete")) {
+                                    collection.deleteImage(at: index, from: "Outfits")
+                                },
+                                secondaryButton: .cancel()
+                            )
+                        }
                     Button(action: { self.showInfo.toggle() }) {
                         Image(systemName: "info.circle").foregroundColor(.blue)
                     }

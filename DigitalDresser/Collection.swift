@@ -11,18 +11,20 @@ import Foundation
 class Collection: ObservableObject, Codable {
     @Published var topItems = [ClothingItem]()
     @Published var bottomItems = [ClothingItem]()
+    @Published var shoesItems = [ClothingItem]()
     @Published var otherItems = [ClothingItem]()
     @Published var favorites = [ClothingItem]()
     @Published var outfits = [OutfitItem]()
     
     enum CodingKeys: CodingKey {
-        case topItems, bottomItems, otherItems, favorites, outfits
+        case topItems, bottomItems, shoesItems, otherItems, favorites, outfits
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         topItems = try container.decode([ClothingItem].self, forKey: .topItems)
         bottomItems = try container.decode([ClothingItem].self, forKey: .bottomItems)
+        shoesItems = try container.decode([ClothingItem].self, forKey: .shoesItems)
         otherItems = try container.decode([ClothingItem].self, forKey: .otherItems)
         favorites = try container.decode([ClothingItem].self, forKey: .favorites)
         outfits = try container.decode([OutfitItem].self, forKey: .outfits)
@@ -32,6 +34,7 @@ class Collection: ObservableObject, Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(topItems, forKey: .topItems)
         try container.encode(bottomItems, forKey: .bottomItems)
+        try container.encode(shoesItems, forKey: .shoesItems)
         try container.encode(otherItems, forKey: .otherItems)
         try container.encode(favorites, forKey: .favorites)
         try container.encode(outfits, forKey: .outfits)
@@ -52,6 +55,7 @@ class Collection: ObservableObject, Codable {
             let decodedData = try JSONDecoder().decode(Collection.self, from: data)
             self.topItems = decodedData.topItems
             self.bottomItems = decodedData.bottomItems
+            self.shoesItems = decodedData.shoesItems
             self.otherItems = decodedData.otherItems
             self.favorites = decodedData.favorites
             self.outfits = decodedData.outfits
@@ -76,6 +80,8 @@ class Collection: ObservableObject, Codable {
             if index >= 0 && index < topItems.count { topItems.remove(at: index) }
         case "Bottoms":
             if index >= 0 && index < bottomItems.count { bottomItems.remove(at: index) }
+        case "Shoes":
+            if index >= 0 && index < shoesItems.count { shoesItems.remove(at: index) }
         case "Other":
             if index >= 0 && index < otherItems.count { otherItems.remove(at: index) }
         case "Favorite":
@@ -85,6 +91,7 @@ class Collection: ObservableObject, Codable {
         default:
             break
         }
+        createFavorites()
     }
     func addItem(_ item: ClothingItem, to arrayType: String) {
             switch arrayType {
@@ -92,6 +99,8 @@ class Collection: ObservableObject, Codable {
                 topItems.append(item)
             case "Bottoms":
                 bottomItems.append(item)
+            case "Shoes":
+                shoesItems.append(item)
             case "Other":
                 otherItems.append(item)
             case "Favorites":
@@ -105,6 +114,8 @@ class Collection: ObservableObject, Codable {
             topItems[index] = item
         } else if let index = bottomItems.firstIndex(where: { $0.id == item.id }) {
             bottomItems[index] = item
+        } else if let index = shoesItems.firstIndex(where: { $0.id == item.id }) {
+            shoesItems[index] = item
         } else if let index = otherItems.firstIndex(where: { $0.id == item.id }) {
             otherItems[index] = item
         }
@@ -131,6 +142,11 @@ class Collection: ObservableObject, Codable {
         for item in bottomItems {
             if(item.favorite && !favorites.contains(item)) {
                 favorites.append(item) } }
+        for item in shoesItems {
+            if(item.favorite && !favorites.contains(item)) {
+                favorites.append(item)
+            }
+        }
         for item in otherItems {
             if(item.favorite && !favorites.contains(item)) {
                 favorites.append(item)  } }

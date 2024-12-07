@@ -38,6 +38,16 @@ struct ClosetMenu: View {
                 .fontWeight(.black)
                 .foregroundColor(.white)
                 
+                NavigationLink("Shoes") {
+                    ShoesCloset()
+                }
+                .font(.custom("Georgia", size: 30))
+                .buttonStyle(.borderedProminent)
+                .tint(buttonColor)
+                .fontWeight(.black)
+                .foregroundColor(.white)
+                
+                
                 NavigationLink("Other") {
                     OtherCloset()
                 }

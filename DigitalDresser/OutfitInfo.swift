@@ -91,11 +91,17 @@ struct OutfitInfo: View {
             .modifier(DismissingKeyboard())
             .navigationTitle("Clothing Info")
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                /*ToolbarItem(placement: .navigationBarLeading) {
                     Button("Back") {
                         dismiss()
                     }
+                }*/
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        dismiss()
+                    }
                 }
+                
             }
         }
     }
