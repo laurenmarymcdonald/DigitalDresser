@@ -115,11 +115,17 @@ struct Style: View {
                                 handleTap(for: &imgIndexBottoms, items: collection.bottomItems)
                             }
                         }
+                        Spacer()
+                        Text("Tap or swipe to navigate between images")
+                                    .font(.footnote)
+                                    .foregroundColor(.secondary)
+                                    .padding()
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
                 }
             }
         }
+        
         .alert(isPresented: $showDuplicateAlert) {
             Alert(title: Text("Duplicate Outfit"), message: Text("You have already created this outfit!"), dismissButton: .default(Text("OK")))
         }

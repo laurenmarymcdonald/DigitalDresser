@@ -88,7 +88,10 @@ struct OutfitInfo: View {
                     }
                 }
             }
-            .modifier(DismissingKeyboard())
+            .onTapGesture {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+            //.modifier(DismissingKeyboard())
             .navigationTitle("Clothing Info")
             .toolbar {
                 /*ToolbarItem(placement: .navigationBarLeading) {

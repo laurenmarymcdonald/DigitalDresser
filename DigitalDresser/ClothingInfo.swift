@@ -114,7 +114,7 @@ struct ClothingInfo: View {
                 }*/
                 ToolbarItem(placement: .navigationBarTrailing) {
                                     Button("Save") {
-                                        collection.saveData()
+                                        //collection.saveData()
                                         dismiss()
                                     }
                                 }
